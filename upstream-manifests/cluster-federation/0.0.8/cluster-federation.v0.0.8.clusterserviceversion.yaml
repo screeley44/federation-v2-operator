@@ -120,6 +120,12 @@ spec:
           - statefulsets
           verbs:
           - "*"
+        - apiGroups:
+          - storage
+          resources:
+          - storageclasses
+          verbs:
+          - "*"
       deployments:
       - name: federation-controller-manager
         spec:
