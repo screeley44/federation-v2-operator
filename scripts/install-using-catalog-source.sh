@@ -29,6 +29,8 @@ if ! [[ "${subscription_types[@]}" =~ (^|[[:space:]])"$subscription_type"($|[[:s
   exit 1
 fi
 
-sed -e "s,quay.io/openshift/federation-operator-registry,quay.io/$REGISTRY/federation-operator-registry," $dir/olm-testing/catalog-source.yaml | $kubectl apply -f -
+# sed -e "s,quay.io/openshift/federation-operator-registry,quay.io/$REGISTRY/federation-operator-registry," $dir/olm-testing/catalog-source.yaml | $kubectl apply -f -
+
+$kubectl apply -f $dir/olm-testing/catalog-source.yaml
 $kubectl apply -f $dir/olm-testing/${subscription_type}-operator-group.yaml
 $kubectl apply -f $dir/olm-testing/${subscription_type}-subscription.yaml
